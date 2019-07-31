@@ -7,11 +7,16 @@ class PingApp extends App {
   onInit() {
     this.log("MyApp is running...");
 
-    var hosts = ["8.8.8.8", "google.com", "yahoo.com"];
+    let that = this;
+    let hosts = ["8.8.8.8", "google.com", "yahoo.com"];
 
     hosts.forEach(function(host) {
-      ping.promise.probe(host).then(function(res) {
-        this.log(res);
+      that.log(`Ping: ${host}`);
+      ping.sys.probe(host, function(isAlive) {
+        var msg = isAlive
+          ? "host " + host + " is alive"
+          : "host " + host + " is dead";
+        console.log(msg);
       });
     });
   }
