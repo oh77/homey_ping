@@ -9,9 +9,7 @@
   "description": {
     "en": "Ping any ip number or URL"
   },
-  "category": [
-    "internet"
-  ],
+  "category": ["internet"],
   "permissions": [],
   "images": {
     "large": "/assets/images/large.png",
@@ -20,5 +18,37 @@
   "author": {
     "name": "Andreas Jagelund",
     "email": "andreas@ohdoubleseven.se"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "ping_success",
+        "title": {
+          "en": "Ping is successful"
+        }
+      },
+      {
+        "id": "ping_failed",
+        "title": {
+          "en": "Ping failed"
+        }
+      }
+    ],
+    "conditions": [
+      {
+        "id": "running_ping",
+        "title": {
+          "en": "Ping is started"
+        }
+      }
+    ],
+    "actions": [
+      {
+        "id": "start_ping",
+        "title": {
+          "en": "Start ping"
+        }
+      }
+    ]
   }
 }
