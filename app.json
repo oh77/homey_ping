@@ -1,0 +1,24 @@
+{
+  "id": "se.oh77.ping",
+  "version": "0.0.1",
+  "compatibility": ">=1.5.0",
+  "sdk": 2,
+  "name": {
+    "en": "Ping"
+  },
+  "description": {
+    "en": "Ping any ip number or URL"
+  },
+  "category": [
+    "internet"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Andreas Jagelund",
+    "email": "andreas@jagelund.se"
+  }
+}
