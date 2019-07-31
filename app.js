@@ -1,13 +1,20 @@
-'use strict';
+"use strict";
 
-const Homey = require('homey');
+const { App } = require("homey");
+const ping = require("ping");
 
-class MyApp extends Homey.App {
-	
-	onInit() {
-		this.log('MyApp is running...');
-	}
-	
+class PingApp extends App {
+  onInit() {
+    this.log("MyApp is running...");
+
+    var hosts = ["8.8.8.8", "google.com", "yahoo.com"];
+
+    hosts.forEach(function(host) {
+      ping.promise.probe(host).then(function(res) {
+        this.log(res);
+      });
+    });
+  }
 }
 
-module.exports = MyApp;
+module.exports = PingApp;
