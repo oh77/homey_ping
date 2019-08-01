@@ -2,6 +2,7 @@
 
 const { App, FlowCardAction, FlowCardTrigger } = require("homey");
 const ping = require("ping");
+const https = require('https')
 
 class PingApp extends App {
   onInit() {
@@ -17,7 +18,7 @@ const handlePing = host => {
 
   // hosts.forEach(function(host) {
 
-  that.log(`Ping: ${host}`);
+  console.log(`Ping: ${host}`);
   ping.sys.probe(host, function(isAlive) {
     var msg = isAlive
       ? "host " + host + " is alive"
@@ -28,17 +29,22 @@ const handlePing = host => {
       pingAliveTrigger
         .register()
         .trigger()
-        .catch(this.error)
-        .then(this.log);
+        .catch(console.log('pingAliveTrigger failed'))
+        .then(console.log('trigger done.'));
     } else {
 		pingDeadTrigger
         .register()
         .trigger()
-        .catch(this.error)
-        .then(this.log);
+        .catch(console.log('pingDeadTrigger failed'))
+        .then(console.log('trigger done.'));
     }
   });
   // });
+
+  console.log(`Request: ${host}`);
+  https.get(host, resp => {
+	  console.log(resp);
+  })
 };
 
 let startPingAction = new FlowCardAction("start_ping");
